@@ -1,14 +1,29 @@
 import React, { Component } from 'react';
 
-import Card from './components/UI/Card/Card';
-import CardWithProgressBar from './components/UI/Card/CardWithProgressBar';
+import LittleCard, { LittleCardWithProgressBar } from './components/UI/Card/LittleCard';
 import TitlePageHeader from './components/UI/Title/TitlePageHeader';
+import InputSearch from './components/UI/InputSearch/InputSearch';
+import ProgressBar from './components/UI/ProgressBar/ProgressBar';
 
 import './assets/css/sb-admin-2.css';
 import './assets/vendor/fontawesome-free/css/all.min.css';
-import InputSearch from './components/UI/InputSearch/InputSearch';
+import Card from './components/UI/Card/Card';
 
 class Home extends Component {
+
+  state = {
+    itemsAction : [
+      {
+        text : "Item 1",
+        link : "####"
+      },
+      {
+        text : "Item 2",
+        link : "####"
+      }
+    ]
+  }
+
   render() {
     return (
       <div id="conteudo">
@@ -351,7 +366,7 @@ class Home extends Component {
                   </div>
                 </div>
                 */}
-                <Card title="Earnings (Monthly)" value="$40,000" icon="fas fa-calendar fa-2x text-gray-300" textType="primary" />
+                <LittleCard title="Earnings (Monthly)" value="$40,000" icon="fas fa-calendar fa-2x text-gray-300" textType="primary" />
 
                 {/** Earnings (Monthly) Card Example 
 
@@ -371,7 +386,7 @@ class Home extends Component {
                   </div>
                 </div>
                 */}
-                <Card title="Earnings (Annual)" value="$215,000" icon="fas fa-dollar-sign fa-2x text-gray-300" textType="success" />
+                <LittleCard title="Earnings (Annual)" value="$215,000" icon="fas fa-dollar-sign fa-2x text-gray-300" textType="success" />
 
 
                 {/** Earnings (Monthly) Card Example 
@@ -400,7 +415,7 @@ class Home extends Component {
                   </div>
                 </div>
                 */}
-                <CardWithProgressBar title="Earnings (Annual)" value="50%" icon="fas fa-dollar-sign fa-2x text-gray-300" textType="info" percent="50%"/>
+                <LittleCardWithProgressBar title="Earnings (Annual)" value="50%" icon="fas fa-dollar-sign fa-2x text-gray-300" textType="info" percent="50"/>
 
                 {/** Pending Requests Card Example 
                 <div className="col-xl-3 col-md-6 mb-4">
@@ -419,7 +434,7 @@ class Home extends Component {
                   </div>
                 </div>
                 */}
-                <Card title="Pending Requests" value="18" icon="fas fa-comments fa-2x text-gray-300" textType="warning" />
+                <LittleCard title="Pending Requests" value="18" icon="fas fa-comments fa-2x text-gray-300" textType="warning" />
               </div>
               
 
@@ -430,9 +445,10 @@ class Home extends Component {
               <div className="row">
 
                 {/** Area Chart */}
+                {/**
                 <div className="col-xl-8 col-lg-7">
                   <div className="card shadow mb-4">
-                    {/** Card Header - Dropdown */}
+                    // Card Header - Dropdown
                     <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                       <h6 className="m-0 font-weight-bold text-primary">Earnings Overview</h6>
                       <div className="dropdown no-arrow">
@@ -448,7 +464,7 @@ class Home extends Component {
                         </div>
                       </div>
                     </div>
-                    {/** Card Body */}
+                    // Card Body
                     <div className="card-body">
                       <div className="chart-area">
                         <canvas id="myAreaChart"></canvas>
@@ -456,18 +472,19 @@ class Home extends Component {
                     </div>
                   </div>
                 </div>
-
+                */}
+                <Card title="Earnings Overview" actionMenuTitle="Dropdown Header:" hideShow="true" itemsAction={this.state.itemsAction} xlWidth="8" lgWidth="7" />
                 {/** Pie Chart */}
                 <div className="col-xl-4 col-lg-5">
                   <div className="card shadow mb-4">
                     {/** Card Header - Dropdown */}
                     <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                       <h6 className="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-                      <div className="dropdown no-arrow">
+                      <div className="dropdown no-arrow show">
                         <a className="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <i className="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                         </a>
-                        <div className="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                        <div className="dropdown-menu dropdown-menu-right shadow animated--fade-in show" aria-labelledby="dropdownMenuLink">
                           <div className="dropdown-header">Dropdown Header:</div>
                           <a className="dropdown-item" href="#">Action</a>
                           <a className="dropdown-item" href="#">Another action</a>
@@ -510,25 +527,40 @@ class Home extends Component {
                     </div>
                     <div className="card-body">
                       <h4 className="small font-weight-bold">Server Migration <span className="float-right">20%</span></h4>
+                      {/** 
                       <div className="progress mb-4">
                         <div className="progress-bar bg-danger" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
+                      */}
+                      <ProgressBar textType="danger" percent="20" />
                       <h4 className="small font-weight-bold">Sales Tracking <span className="float-right">40%</span></h4>
+                      {/**
                       <div className="progress mb-4">
                         <div className="progress-bar bg-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
+                      */}
+                      <ProgressBar textType="warning" percent="40" />
                       <h4 className="small font-weight-bold">Customer Database <span className="float-right">60%</span></h4>
+                      {/**
                       <div className="progress mb-4">
                         <div className="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
+                      */}
+                      <ProgressBar textType="primary" percent="60" />
                       <h4 className="small font-weight-bold">Payout Details <span className="float-right">80%</span></h4>
+                      {/**
                       <div className="progress mb-4">
                         <div className="progress-bar bg-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
+                       */}
+                       <ProgressBar textType="info" percent="80" />
                       <h4 className="small font-weight-bold">Account Setup <span className="float-right">Complete!</span></h4>
+                      {/**
                       <div className="progress">
                         <div className="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
+                       */}
+                       <ProgressBar textType="success" percent="100" />
                     </div>
                   </div>
 
@@ -635,24 +667,24 @@ class Home extends Component {
         </div>
         {/** End of Content Wrapper */}
       </div>
-      <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
+      <a className="scroll-to-top rounded" href="#page-top">
+        <i className="fas fa-angle-up"></i>
       </a>
 
       {/** Logout Modal  */}
-      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+      <div className="modal fade" id="logoutModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+              <button className="close" type="button" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
               </button>
             </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-            <div class="modal-footer">
-              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-              <a class="btn btn-primary" href="login.html">Logout</a>
+            <div className="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div className="modal-footer">
+              <button className="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+              <a className="btn btn-primary" href="login.html">Logout</a>
             </div>
           </div>
         </div>
