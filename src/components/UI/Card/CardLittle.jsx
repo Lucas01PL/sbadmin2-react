@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class LittleCard extends Component {
+export default class CardLittle extends Component {
 
     state = {
         title : "",
@@ -28,7 +28,7 @@ export default class LittleCard extends Component {
     }
 }
 
-export class LittleCardWithProgressBar extends Component {
+export class CardLittleWithProgressBar extends Component {
 
     state = {
         title : "",

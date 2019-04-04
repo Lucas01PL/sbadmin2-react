@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import LittleCard, { LittleCardWithProgressBar } from './components/UI/Card/LittleCard';
+import CardLittle, { CardLittleWithProgressBar } from './components/UI/Card/CardLittle';
 import TitlePageHeader from './components/UI/Title/TitlePageHeader';
 import InputSearch from './components/UI/InputSearch/InputSearch';
 import ProgressBar from './components/UI/ProgressBar/ProgressBar';
@@ -8,6 +8,7 @@ import ProgressBar from './components/UI/ProgressBar/ProgressBar';
 import './assets/css/sb-admin-2.css';
 import './assets/vendor/fontawesome-free/css/all.min.css';
 import Card from './components/UI/Card/Card';
+import CardContent from './components/UI/Card/CardContent';
 
 class Home extends Component {
 
@@ -22,6 +23,11 @@ class Home extends Component {
         link : "####"
       }
     ]
+  }
+
+  componentStyle = {
+    paddingLeft: "0",
+    paddingRight: "0",
   }
 
   render() {
@@ -366,7 +372,7 @@ class Home extends Component {
                   </div>
                 </div>
                 */}
-                <LittleCard title="Earnings (Monthly)" value="$40,000" icon="fas fa-calendar fa-2x text-gray-300" textType="primary" />
+                <CardLittle title="Earnings (Monthly)" value="$40,000" icon="fas fa-calendar fa-2x text-gray-300" textType="primary" />
 
                 {/** Earnings (Monthly) Card Example 
 
@@ -386,7 +392,7 @@ class Home extends Component {
                   </div>
                 </div>
                 */}
-                <LittleCard title="Earnings (Annual)" value="$215,000" icon="fas fa-dollar-sign fa-2x text-gray-300" textType="success" />
+                <CardLittle title="Earnings (Annual)" value="$215,000" icon="fas fa-dollar-sign fa-2x text-gray-300" textType="success" />
 
 
                 {/** Earnings (Monthly) Card Example 
@@ -415,7 +421,7 @@ class Home extends Component {
                   </div>
                 </div>
                 */}
-                <LittleCardWithProgressBar title="Earnings (Annual)" value="50%" icon="fas fa-dollar-sign fa-2x text-gray-300" textType="info" percent="50"/>
+                <CardLittleWithProgressBar title="Earnings (Annual)" value="50%" icon="fas fa-dollar-sign fa-2x text-gray-300" textType="info" percent="50"/>
 
                 {/** Pending Requests Card Example 
                 <div className="col-xl-3 col-md-6 mb-4">
@@ -434,12 +440,9 @@ class Home extends Component {
                   </div>
                 </div>
                 */}
-                <LittleCard title="Pending Requests" value="18" icon="fas fa-comments fa-2x text-gray-300" textType="warning" />
+                <CardLittle title="Pending Requests" value="18" icon="fas fa-comments fa-2x text-gray-300" textType="warning" />
               </div>
               
-
-
-
               {/** Content Row */}
 
               <div className="row">
@@ -473,18 +476,22 @@ class Home extends Component {
                   </div>
                 </div>
                 */}
-                <Card title="Earnings Overview" actionMenuTitle="Dropdown Header:" hideShow="true" itemsAction={this.state.itemsAction} xlWidth="8" lgWidth="7" />
-                {/** Pie Chart */}
+                <Card title="Earnings Overview" actionMenuTitle="Dropdown Header:" hideShow="true" itemsAction={this.state.itemsAction} xlWidth="8" lgWidth="7" >
+                  <CardContent>
+                    Hello World
+                  </CardContent>
+                </Card>
+                {/** Pie Chart 
                 <div className="col-xl-4 col-lg-5">
                   <div className="card shadow mb-4">
-                    {/** Card Header - Dropdown */}
+                    /** Card Header - Dropdown
                     <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                       <h6 className="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-                      <div className="dropdown no-arrow show">
+                      <div className="dropdown no-arrow">
                         <a className="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <i className="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                         </a>
-                        <div className="dropdown-menu dropdown-menu-right shadow animated--fade-in show" aria-labelledby="dropdownMenuLink">
+                        <div className="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                           <div className="dropdown-header">Dropdown Header:</div>
                           <a className="dropdown-item" href="#">Action</a>
                           <a className="dropdown-item" href="#">Another action</a>
@@ -493,7 +500,7 @@ class Home extends Component {
                         </div>
                       </div>
                     </div>
-                    {/** Card Body */}
+                    /** Card Body 
                     <div className="card-body">
                       <div className="chart-pie pt-4 pb-2">
                         <canvas id="myPieChart"></canvas>
@@ -512,20 +519,19 @@ class Home extends Component {
                     </div>
                   </div>
                 </div>
+              */}
+                <Card title="Revenue Sources" actionMenuTitle="Dropdown Header:" hideShow="true" xlWidth="4" lgWidth="5" >
+                </Card>
               </div>
 
               {/** Content Row */}
               <div className="row">
-
+                
                 {/** Content Column */}
                 <div className="col-lg-6 mb-4">
 
-                  {/** Project Card Example */}
-                  <div className="card shadow mb-4">
-                    <div className="card-header py-3">
-                      <h6 className="m-0 font-weight-bold text-primary">Projects</h6>
-                    </div>
-                    <div className="card-body">
+                  <Card title="Projects" actionMenuTitle="Dropdown Header:" hideShow="true" xlWidth="12" lgWidth="12">
+                    <CardContent>
                       <h4 className="small font-weight-bold">Server Migration <span className="float-right">20%</span></h4>
                       {/** 
                       <div className="progress mb-4">
@@ -552,17 +558,17 @@ class Home extends Component {
                       <div className="progress mb-4">
                         <div className="progress-bar bg-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
-                       */}
-                       <ProgressBar textType="info" percent="80" />
+                      */}
+                      <ProgressBar textType="info" percent="80" />
                       <h4 className="small font-weight-bold">Account Setup <span className="float-right">Complete!</span></h4>
                       {/**
                       <div className="progress">
                         <div className="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
-                       */}
-                       <ProgressBar textType="success" percent="100" />
-                    </div>
-                  </div>
+                      */}
+                      <ProgressBar textType="success" percent="100" />
+                    </CardContent>
+                  </Card>
 
                   {/** Color System */}
                   <div className="row">

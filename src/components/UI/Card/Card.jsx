@@ -23,6 +23,8 @@ export default class Card extends Component {
         <div className="card shadow mb-4">
           <div className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
             <h6 className="m-0 font-weight-bold text-primary">{this.props.title}</h6>
+            
+            {(this.props.itemsAction != null && this.props.itemsAction.length > 0) &&
             <div className={this.state.hideShow ? "dropdown no-arrow show" : "dropdown no-arrow"} >
               <a href="#" className="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick={this.toggle}>
                 <i className="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -36,11 +38,10 @@ export default class Card extends Component {
                 }
               </div>
             </div>
+            }
           </div>
-          <div className="card-body">
-            <div className="chart-area">
-              <canvas id="myAreaChart"></canvas>
-            </div>
+          <div>
+            {this.props.children}
           </div>
         </div>
       </div>
